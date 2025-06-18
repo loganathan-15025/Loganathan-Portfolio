@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Portfolio.</a>
+      <nav class="navbar">
+        <a href="#Home" style="--i: 1">Home</a>
+        <a href="#About" style="--i: 2">About</a>
+        <a href="#Skills" style="--i: 4">Skills</a>
+        <a href="#Projects" style="--i: 5">Projects</a>
+        <a href="#Contact" style="--i: 3">Contact</a>
+      </nav>
+    </header>
+
+    <section class="home" id="Home">
+      <div class="home-sci">
+        <a href="https://www.facebook.com/"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/"
+          ><i class="bx bxl-instagram"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/loganathan-s-15525b281"
+          ><i class="bx bxl-linkedin"></i
+        ></a>
+        <a href="https://github.com/loganathan-15025"
+          ><i class="bx bxl-github"></i
+        ></a>
+      </div>
+      <div class="home-content">
+        <h1>Hi, I'm LOGANATHAN S</h1>
+        <br />
+        <h3>MERN STACK DEVELOPER / UI UX DESIGNER</h3>
+        <br />
+        <a href="#Contact" class="btn">Contact Me</a>
+      </div>
+      <div class="home-img">
+        <div class="glow">
+          <span></span>
+          <span></span>
+          <div class="image">
+            <img src="mypic.jpeg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="About">
+      <div class="about-content">
+        <div class="about-image">
+          <div class="home-img">
+            <div class="glow">
+              <span></span>
+              <span></span>
+              <div class="image">
+                <img src="mypic.jpeg" alt="Loganathan S" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="heading">About <span>Me</span></h2>
+          <h3 class="text-animation">
+            <span class="line">Passionate Full-Stack Developer</span>
+            <span class="line">Creative UI/UX Designer</span>
+          </h3>
+          <p>
+            I am a dedicated full-stack developer with extensive experience in
+            both frontend and backend technologies, primarily leveraging the
+            MERN stack (MongoDB, Express.js, React, and Node.js) to build
+            dynamic and responsive web applications. My background in UI/UX
+            design allows me to create visually appealing and user-centric
+            interfaces, ensuring a seamless experience for users. I am
+            passionate about continuous learning and thrive on tackling
+            challenging projects that push the boundaries of my skills and
+            creativity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="Skills">
+      <h2 class="heading">Skills <span>Overview</span></h2>
+      <div class="skills-container">
+        <div class="skill-box">
+          <h2>Full-Stack</h2>
+          <div class="sub-skills">
+            <div class="sub-skill">HTML</div>
+            <div class="sub-skill">CSS</div>
+            <div class="sub-skill">JavaScript</div>
+            <div class="sub-skill">React JS</div>
+            <div class="sub-skill">MongoDB</div>
+          </div>
+        </div>
+        <div class="skill-box">
+          <h2>Data Analytics</h2>
+          <div class="sub-skills">
+            <div class="sub-skill">Microsoft Excel</div>
+            <div class="sub-skill">MySql</div>
+            <div class="sub-skill">Microsoft PowerBI</div>
+          </div>
+        </div>
+        <div class="skill-box">
+          <h2>Programming Languages</h2>
+          <div class="sub-skills">
+            <div class="sub-skill">Python {Intermediate}</div>
+            <div class="sub-skill">C {Intermediate}</div>
+            <div class="sub-skill">Java {basics}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="Projects">
+      <h1 class="prheading">Projects <span>Showcase</span></h1>
+      <div class="projects-container">
+        <div class="project-box">
+          <h3 class="Taskm">Task Manager</h3>
+          <p>
+            A fully functional Task Manager platform with features like add,
+            delete and edit tasks and implemented the drag and drop feature for
+            better convinience.Also implemented the deadline feature.
+          </p>
+          <a href="https://github.com/loganathan-15025" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+          <h3 class="netflix">Ecommerce website</h3>
+          <p>
+            A responsive ecommerce website that displays item and the user can
+            purchase products.
+          </p>
+          <a href="https://github.com/loganathan-15025" class="btn">View Project</a>
+        </div>
+        <div class="project-box">
+          <h3 class="spotify">Letslisten</h3>
+          <p>
+            A music streaming app that offers a similar experience to
+            Spotify,connects people with real time chat functionality.
+          </p>
+          <a href="https://github.com/loganathan-15025" class="btn">View Project</a>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="Contact">
+      <div class="contact-content">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <p>Feel free to reach out!</p>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
