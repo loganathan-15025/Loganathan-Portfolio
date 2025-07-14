@@ -61,15 +61,13 @@ html {
   font-size: 18px;
   color: #fff;
   text-decoration: none;
-  margin-left: auto;
   font-weight: 300;
-  margin-left: 35px;
   opacity: 0;
   animation: slideTop 0.5s ease forwards;
   animation-delay: calc(0.1s * var(--i));
 }
 
-.navbar a.activate,
+.navbar a.active,
 .navbar a:hover {
   background: linear-gradient(45deg, #f06, #3cf);
   -webkit-text-fill-color: transparent;
@@ -119,11 +117,13 @@ html {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 48px;
-  background: rgba(150, 16, 119, 0.916);
+  width: 140px !important;
+  min-width: unset !important;
+  max-width: unset !important;
+  height: 44px !important;
+  background-color: #1e90ff; /* ✅ Modern sky blue */
   border-radius: 40px;
-  font-size: 19px;
+  font-size: 16px !important;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -132,8 +132,14 @@ html {
   opacity: 0;
   animation: slideTop 0.5s ease forwards;
   animation-delay: 1.8s;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
+.btn:hover {
+  background-color: #1c86ee; /* Slightly darker on hover */
+  transform: scale(1.05);
+}
 .btn::before {
   content: "";
   position: absolute;
@@ -192,8 +198,9 @@ html {
   font-size: 20px;
   color: #fff;
   text-decoration: none;
-  margin: 40px 0;
+  margin: 0;
   z-index: 1;
+  opacity: 0;
 }
 
 .home-sci a:nth-child(1) {
@@ -385,12 +392,55 @@ html {
     transform: rotate(360deg);
   }
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .about {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #0c1022;
   padding: 50px 10%;
+  margin-bottom: 100px; /* Added for desktop spacing below about section */
+  padding-top: 180px; /* Set to 180px as requested */
 }
 
 .about-content {
@@ -507,6 +557,7 @@ html {
 .contact-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .contact .heading span {
@@ -538,6 +589,28 @@ html {
   transition: border-color 0.3s;
 }
 
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 600px;
+  min-width: 280px;
+  height: 42px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 12px;
+  border: 2px solid #a020f0; /* 💜 Violet border */
+  background-color: #080808b5;
+  color: #ffffff;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.contact-form textarea {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -545,22 +618,11 @@ html {
   box-shadow: 0 0 5px rgba(240, 6, 6, 0.5);
 }
 
-.btn {
-  background: #e51313;
-  padding: 10px 20px;
-  border-radius: 30px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: medium;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s;
-}
-
-.btn:hover {
-  background: #f06;
-  transform: scale(1.05);
+input::placeholder,
+textarea::placeholder {
+  color: #fff !important;
+  opacity: 1;
+  font-size: 15px;
 }
 
 .skills {
@@ -652,8 +714,13 @@ html {
   width: 300px;
   text-align: left;
   padding: 20px;
+  color: #ffffff; /* ✅ Makes all text inside white */
   position: relative;
   margin-bottom: 50px; /* Added margin for spacing */
+}
+.project-box p {
+  font-size: 15px; /* 🔽 Smaller paragraph */
+  color: #ffffff !important;
 }
 
 .project-box:hover {
@@ -694,24 +761,6 @@ html {
   color: #f06;
 }
 
-.project-box .btn {
-  background: #e51313;
-  padding: 10px 20px;
-  border-radius: 30px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: medium;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s;
-}
-
-.project-box .btn:hover {
-  background: #f06;
-  transform: scale(1.05);
-}
-
 @media (max-width: 768px) {
   .header {
     padding: 15px 5%;
@@ -727,9 +776,28 @@ html {
   }
 
   .home {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 100px 5% 0;
+    gap: 20px;
+    justify-content: flex-start;
+    height: auto;
+  }
+  .home-sci {
+    order: 1;
+    margin-bottom: 20px; /* Add space below links */
+  }
+  .home-img {
+    order: 2;
+    margin-top: 0;
+    margin-bottom: 140px; /* Even larger space below image */
+  }
+  .home-content {
+    order: 3;
+    margin-top: 0;
+    margin-bottom: 140px; /* Even larger space below text */
   }
 
   .home-content h1 {
@@ -748,7 +816,18 @@ html {
   .glow {
     width: 280px;
     height: 280px;
-    margin-top: 40px;
+    margin-top: -30px; /* Move image further up, adjust value as needed */
+  }
+  .home-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  .home-img,
+  .glow {
+    margin-bottom: 0 !important;
+  }
+  .home-content h1 {
+    margin-top: 0 !important;
   }
 
   .glow::after,
@@ -764,12 +843,12 @@ html {
   .about {
     flex-direction: column;
     text-align: center;
-    padding: 50px 5%;
+    padding: 20px 5% 30px 5%; /* Reduce top and bottom padding */
   }
 
   .about-content {
-    flex-direction: column;
-    padding: 50px 0;
+    flex-direction: column-reverse; /* Image above text */
+    padding: 20px 0 0 0; /* Reduce top padding */
   }
 
   .about-text {
@@ -777,7 +856,7 @@ html {
   }
 
   .about-image {
-    margin: 30px 0 0;
+    margin: 0 0 20px 0;
   }
 
   .skills .heading,
@@ -806,18 +885,22 @@ html {
   }
 
   .btn {
-    width: 100%;
-    height: auto;
-    padding: 12px 0;
-    font-size: 18px;
+    width: 90px !important;
+    font-size: 14px !important;
+    height: 38px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
   }
 
   .home-sci {
-    flex-direction: row;
+    display: flex;
+    flex-direction: row !important; /* Force horizontal on mobile */
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    align-items: center;
+    gap: 16px; /* ✅ Creates space between icons */
     margin-top: 40px;
+    flex-wrap: wrap; /* ✅ Allows wrapping on small screens */
   }
 
   .home-sci a {
@@ -855,5 +938,344 @@ html {
 
   .skills-container {
     gap: 30px;
+  }
+}
+/* Overlay background */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  transition: 0.3s ease;
+}
+.overlay.active {
+  display: block;
+}
+
+/* Hamburger styling */
+/* Hamburger base */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* X transformation */
+/* X transformation - perfectly centered and symmetric */
+.hamburger.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 6px);
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Navbar slide down and vertical links */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 35px; /* ✅ spacing between links */
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 60px; /* just below the hamburger */
+    left: 15px; /* align to hamburger */
+    width: 220px;
+    background: rgba(12, 16, 34, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 12px;
+    padding: 10px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .navbar.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar a {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .home-sci {
+    display: flex;
+    flex-direction: row !important; /* Force horizontal on mobile */
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .home-sci a {
+    margin: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .home-sci a {
+    position: relative;
+    top: -17px; /* ✅ Shift icons upward slightly */
+  }
+}
+@media (min-width: 769px) {
+  .contact-form input,
+  .contact-form textarea {
+    max-width: 600px;
+    min-width: 400px;
+    height: 40px;
+    padding: 10px 14px;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: #fff;
+  }
+
+  .contact-form textarea {
+    height: auto;
+    min-height: 100px;
+  }
+
+  /* Remove label visibility (optional) */
+  .form-group label {
+    display: none;
+  }
+
+  /* Ensure white placeholder text */
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #ffffff !important;
+    opacity: 1;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 769px) {
+  .projects-container {
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+    align-items: stretch; /* ✅ makes all cards stretch equally */
+    flex-wrap: wrap;
+  }
+
+  .project-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;             /* allow height to stretch */
+    min-height: 350px;        /* ✅ set consistent minimum height */
+    width: 300px;             /* or your preferred fixed width */
+    background-color: #101010;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(143, 8, 8, 0.993);
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+  }
+
+  .project-box .btn {
+    margin-top: auto;          /* ✅ pushes the button to bottom */
+    align-self: flex-start;    /* or center / flex-end based on alignment */
+  }
+}
+
+
+
+.home-sci {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding-bottom: 60px; /* Add space below home section */
+  }
+  .about {
+    margin-top: 30px; /* Add space above about section */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+  }
+}
+
+.contact-form .btn::before,
+.contact-form .btn::after,
+.contact .btn::before,
+.contact .btn::after,
+button.btn::before,
+button.btn::after,
+input[type="submit"].btn::before,
+input[type="submit"].btn::after {
+  background: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+button,
+.btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  background: #1e3a8a !important; /* Darker blue */
+  color: #fff !important;
+  border: 2px solid #1e3a8a !important;
+  border-radius: 40px !important; /* Fully rounded */
+  min-width: 260px !important; /* Increased length */
+  height: 52px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  font-size: 19px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  transition: background 0.2s, color 0.2s, transform 0.2s !important;
+  text-decoration: none !important;
+  content: none !important;
+  display: inline-block;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #172554 !important; /* Even darker blue on hover */
+  color: #fff !important;
+  border: 2px solid #172554 !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* Remove any gradient or overlay from pseudo-elements for all .btns */
+.btn::before,
+.btn::after {
+  background: none !important;
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .projects .prheading {
+    padding-bottom: 60px !important; /* ⬇ Reduce space below heading */
+  }
+  .projects-container {
+    flex-direction: column;
+    align-items: center; /* ✅ Center the cards */
+    gap: 40px;
+    padding: 0 20px; /* ✅ Add side padding */
+  }
+
+  .project-box {
+    width: 100%;
+    max-width: 320px; /* ✅ Prevent full width on mobile */
+    padding: 24px 16px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background-color: #101010;
+    box-shadow: 0 4px 20px rgba(143, 8, 8, 0.993);
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding-top: 160px !important; /* Set to 160px as requested for mobile view */
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding-top: 200px !important; /* ⬆ Increase top space */
+    padding-bottom: 190px !important; /* ⬇ Increase bottom space */
+    margin-top: 80px !important; /* Optional: create space from above section */
+  }
+
+  .contact-content {
+    padding: 0 20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-box .btn {
+    font-size: 14px !important; /* ⬆ Slightly larger text */
+    padding: 10px 20px !important; /* ⬆ More padding for finger tap */
+    min-width: 145px !important;
+    height: 35px !important;
+    border-radius: 24px !important;
+    display: block !important;
+    margin: 16px auto 0 auto !important;
+    text-align: center;
   }
 }
