@@ -784,10 +784,11 @@ textarea::placeholder {
     gap: 20px;
     justify-content: flex-start;
     height: auto;
+    margin-top: -30px;
   }
   .home-sci {
     order: 1;
-    margin-bottom: 20px; /* Add space below links */
+    margin-bottom: -20px; /* Add space below links */
   }
   .home-img {
     order: 2;
@@ -1067,6 +1068,14 @@ textarea::placeholder {
     top: -17px; /* ✅ Shift icons upward slightly */
   }
 }
+
+@media (max-width: 8px) {
+  .about {
+    margin-top: -70px !important;
+    padding-top: -70px !important;
+  }
+}
+
 @media (min-width: 769px) {
   .contact-form input,
   .contact-form textarea {
@@ -1122,9 +1131,9 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;             /* allow height to stretch */
-    min-height: 350px;        /* ✅ set consistent minimum height */
-    width: 300px;             /* or your preferred fixed width */
+    height: 100%; /* allow height to stretch */
+    min-height: 350px; /* ✅ set consistent minimum height */
+    width: 300px; /* or your preferred fixed width */
     background-color: #101010;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(143, 8, 8, 0.993);
@@ -1134,12 +1143,10 @@ textarea::placeholder {
   }
 
   .project-box .btn {
-    margin-top: auto;          /* ✅ pushes the button to bottom */
-    align-self: flex-start;    /* or center / flex-end based on alignment */
+    margin-top: auto; /* ✅ pushes the button to bottom */
+    align-self: flex-start; /* or center / flex-end based on alignment */
   }
 }
-
-
 
 .home-sci {
   display: flex;
@@ -1245,6 +1252,8 @@ button,
 
 @media (max-width: 768px) {
   .about {
+    padding: 40px 5% 80px 5% !important; /* Increased bottom padding */
+
     padding-top: 160px !important; /* Set to 160px as requested for mobile view */
   }
 }
@@ -1264,6 +1273,7 @@ button,
   .contact-form textarea {
     width: 100%;
     font-size: 16px;
+    margin-bottom: 10px;
   }
 }
 
@@ -1277,5 +1287,29 @@ button,
     display: block !important;
     margin: 16px auto 0 auto !important;
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding-top: 90px !important; /* Adjust as needed */
+    margin-top: 90px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    margin-top: -100px !important; /* Final correct value */
+  }
+}
+
+@media (min-width: 769px) {
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh; /* Takes full screen height */
+    margin-top: 0; /* Reset */
+    padding-top: 0; /* Reset */
   }
 }
