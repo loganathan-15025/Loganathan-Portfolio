@@ -1313,3 +1313,60 @@ button,
     padding-top: 0; /* Reset */
   }
 }
+
+/* 🌙 Footer - Desktop */
+.footer {
+  background-color: #0c1022;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 10%;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: -15px;               /* ensure no gap */
+  border-top: none;            /* ❌ removed the thin line */
+}
+
+.footer span {
+  color: #f06;
+  font-weight: 500;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 5%;
+    font-size: 13px;
+    line-height: 1.5;
+    word-break: break-word;
+    margin-top: -80px;
+    border-top: none;         /* also no border for mobile */
+  }
+
+  .footer span {
+    display: inline;
+    margin-top: 5px;
+  }
+
+  .contact {
+    padding-bottom: 15px;     /* reduce space above footer */
+    margin-bottom: 0;
+  }
+
+  .contact-content,
+  .contact-form {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* 🖥 Desktop contact spacing fix */
+.contact {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+
+.contact-content,
+.contact-form {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
